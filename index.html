@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTAA // Neural Network</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scanlines"></div>
+<div class="noise"></div>
+
+<header class="glass-panel">
+  <div class="logo" data-text="MTAA">
+    <span class="logo-icon">◉</span>
+    <span class="glitch-text">MTAA</span>
+    <span class="version">v2.0</span>
+  </div>
+  <div class="live-indicator">
+    <div class="pulse-ring"></div>
+    <div class="pulse-dot"></div>
+    <span id="live-count">47,293</span>
+    <span class="label">ONLINE</span>
+  </div>
+</header>
+
+<nav class="nav-glass">
+  <button class="nav-btn active" data-section="home" onclick="show('home')">
+    <span class="btn-icon">⌂</span>
+    <span class="btn-text">FEED</span>
+    <div class="btn-glow"></div>
+  </button>
+  <button class="nav-btn" data-section="vault" onclick="show('vault')">
+    <span class="btn-icon">◈</span>
+    <span class="btn-text">ARCHIVE</span>
+    <div class="btn-glow"></div>
+  </button>
+  <button class="nav-btn" data-section="post" onclick="show('post')">
+    <span class="btn-icon">⊕</span>
+    <span class="btn-text">TRANSMIT</span>
+    <div class="btn-glow"></div>
+  </button>
+</nav>
+
+<main class="container">
+
+  <!-- HOME SECTION -->
+  <section id="home" class="section active">
+    <div class="trending-bar">
+      <div class="trending-icon">◉</div>
+      <div class="trending-text">NEURAL ACTIVITY DETECTED</div>
+      <div class="trending-line"></div>
+    </div>
+    <div id="feed" class="feed-grid"></div>
+    <div class="loading" id="loading">
+      <div class="loader-ring"></div>
+      <div class="loader-text">SYNCHRONIZING...</div>
+    </div>
+  </section>
+
+  <!-- VAULT SECTION -->
+  <section id="vault" class="section">
+    <div class="vault-header">
+      <h2 class="vault-title">◈ DATA VAULT</h2>
+      <p class="vault-sub">Historical archives from the neural network</p>
+    </div>
+    <div class="vault-grid" id="vault-grid">
+      <div class="vault-card" onclick="openVault('kplc')">
+        <div class="vault-glitch"></div>
+        <div class="vault-content">
+          <div class="vault-icon">⚡</div>
+          <h3>KPLC_BLACKOUT_2023</h3>
+          <p>Electrical failure memes // Dark humor protocols</p>
+          <div class="vault-meta">
+            <span>◉ 12.5k</span>
+            <span>◆ 892</span>
+            <span>◊ DEC_2023</span>
+          </div>
+        </div>
+      </div>
+      <div class="vault-card" onclick="openVault('nitakutext')">
+        <div class="vault-glitch"></div>
+        <div class="vault-content">
+          <div class="vault-icon">📡</div>
+          <h3>NITAKUTEXT_PROTOCOL</h3>
+          <p>Empty promise algorithms // Ghosting metrics</p>
+          <div class="vault-meta">
+            <span>◉ 8.2k</span>
+            <span>◆ 567</span>
+            <span>◊ 2022</span>
+          </div>
+        </div>
+      </div>
+      <div class="vault-card" onclick="openVault('gengetone')">
+        <div class="vault-glitch"></div>
+        <div class="vault-content">
+          <div class="vault-icon">♪</div>
+          <h3>GENGETONE_WAVE_01</h3>
+          <p>Audio frequency takeover // 254 sonic dominance</p>
+          <div class="vault-meta">
+            <span>◉ 24.1k</span>
+            <span>◆ 1.2k</span>
+            <span>◊ 2019</span>
+          </div>
+        </div>
+      </div>
+      <div class="vault-card" onclick="openVault('mzinga')">
+        <div class="vault-glitch"></div>
+        <div class="vault-content">
+          <div class="vault-icon">⚗</div>
+          <h3>MZINGA_ECONOMICS</h3>
+          <p>Liquid distribution algorithms // Weekend mathematics</p>
+          <div class="vault-meta">
+            <span>◉ 6.7k</span>
+            <span>◆ 445</span>
+            <span>◊ 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST SECTION -->
+  <section id="post" class="section">
+    <div class="post-header">
+      <h2 class="post-title">⊕ TRANSMIT DATA</h2>
+      <div class="post-status">SYSTEM READY</div>
+    </div>
+    
+    <div class="post-interface glass-panel">
+      <textarea id="newPost" class="neural-input" placeholder="Initialize neural transmission..."></textarea>
+      
+      <div class="media-preview-container">
+        <img id="imagePreview" class="media-preview" alt="Preview">
+        <video id="videoPreview" class="media-preview" controls></video>
+        <button class="remove-media" onclick="clearMedia()">×</button>
+      </div>
+
+      <div class="interface-controls">
+        <div class="tool-cluster">
+          <label class="tool-btn" title="Upload Image">
+            <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoSelect(event)">
+            <span class="tool-icon">◐</span>
+            <span class="tool-label">IMAGE</span>
+          </label>
+          <label class="tool-btn" title="Upload Video">
+            <input type="file" id="videoInput" accept="video/*" onchange="handleVideoSelect(event)">
+            <span class="tool-icon">◑</span>
+            <span class="tool-label">VIDEO</span>
+          </label>
+          <button class="tool-btn" onclick="addPoll()">
+            <span class="tool-icon">◒</span>
+            <span class="tool-label">POLL</span>
+          </button>
+        </div>
+        <button class="transmit-btn" onclick="addPost()">
+          <span class="btn-text">TRANSMIT</span>
+          <div class="btn-particles"></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="trending-cluster">
+      <h3 class="cluster-title">◊ TRENDING VECTORS</h3>
+      <div class="vector-tags">
+        <span class="vector-tag" onclick="addTrending('Gengetone')">#GENGETONE</span>
+        <span class="vector-tag" onclick="addTrending('KPLC')">#KPLC</span>
+        <span class="vector-tag" onclick="addTrending('MtaaLife')">#MTAA_LIFE</span>
+        <span class="vector-tag" onclick="addTrending('Nairobi')">#NAIROBI</span>
+        <span class="vector-tag" onclick="addTrending('TukoSite')">#TUKO_SITE</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<div class="cursor-glow"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
